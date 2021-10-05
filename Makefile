@@ -1,8 +1,9 @@
-SRCS = srcs/main.c srcs/get_next_line.c
+SRCS = srcs/main.c srcs/get_next_line.c srcs/list.c srcs/data_parsing.c\
+		srcs/error_handling.c
 
 NAME = scop
 
-FLAGS = -Werror -Wextra -Wall
+FLAGS = -Werror -Wextra -Wall #-g3 -fsanitize=address
 
 INCLUDES = includes
 
@@ -14,7 +15,7 @@ COMPIL = gcc
 
 all:
 	make -C libft all
-	$(COMPIL) $(FLAGS) libft/libft.a -I $(INCLUDES) $(SRCS) $(SRCS2) -L $(LIB) -lmlx $(FRAMEWORK) -o $(NAME)
+	$(COMPIL) $(FLAGS) libft/libft.a -I $(INCLUDES) $(SRCS) -L $(LIB) -lmlx $(FRAMEWORK) -o $(NAME)
 
 $(NAME): all
 
