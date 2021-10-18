@@ -20,6 +20,7 @@ LFLAGS = -Lmlx_linux -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	cd mlx_linux && ./configure
 	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 
 clean:
