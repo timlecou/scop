@@ -1,31 +1,31 @@
-SRCS = srcs/main.c srcs/get_next_line.c srcs/list.c srcs/data_parsing.c\
-		srcs/error_handling.c
+INC=/usr/include
 
-NAME = scop
+INCLIB=$(INC)/../lib
 
-FLAGS = -Werror -Wextra -Wall #-g3 -fsanitize=address
+CC= clang++
 
-INCLUDES = includes
+CFLAGS= -I$(INC) -Iincludes -Imlx_linux -g -Werror -Wextra -Wall
 
-LIB = mlx
+NAME= scop
 
-FRAMEWORK = -framework OpenGL -framework AppKit
+SRC = srcs/main.cpp
 
-COMPIL = gcc
+OBJ = $(SRC:%.cpp=%.o)
 
-all:
-	make -C libft all
-	$(COMPIL) $(FLAGS) libft/libft.a -I $(INCLUDES) $(SRCS) -L $(LIB) -lmlx $(FRAMEWORK) -o $(NAME)
+LFLAGS = -Lmlx_linux -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
 
-$(NAME): all
+%.o: %.cpp
+	$(CC) -c $(CFLAGS) $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 
 clean:
-	make -C libft clean
+	rm -f $(OBJ)
 
-fclean:
-	/bin/rm $(NAME)
-	make -C libft fclean
+fclean: clean
+	rm -f $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re scop
+re: clean all
