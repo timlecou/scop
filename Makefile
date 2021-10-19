@@ -8,7 +8,7 @@ CFLAGS= -I$(INC) -Iincludes -Imlx_linux -g -Werror -Wextra -Wall
 
 NAME= scop
 
-SRC = srcs/main.cpp
+SRC = srcs/main.cpp srcs/Mlx.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 
@@ -19,9 +19,11 @@ LFLAGS = -Lmlx_linux -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	cd mlx_linux && ./configure
+$(NAME): mlx $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
+
+mlx:
+	cd mlx_linux ; ./configure ; cd ..
 
 clean:
 	rm -f $(OBJ)
@@ -29,4 +31,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all

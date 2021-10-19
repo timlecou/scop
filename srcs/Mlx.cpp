@@ -1,47 +1,58 @@
-Mlx(void)
+#include "scop.h"
+
+Mlx::Mlx(void)
 {
 }
-Mlx(const Mlx &mlx)
+
+Mlx::Mlx(const Mlx &mlx)
 {
     this->ptr = mlx.ptr;
     this->win_ptr = mlx.win_ptr;
 }
-~Mlx(void)
+
+Mlx::~Mlx(void)
 {
 }
-Mlx &operator= (const Mlx &mlx)
+
+Mlx &Mlx::operator= (const Mlx &mlx)
 {
     this->ptr = mlx.ptr;
     this->win_ptr = mlx.win_ptr;
     return (*this);
 }
 
-void    *getPtr(void) const
+void    Mlx::init(void)
+{
+    void	*ptr = mlx_init();
+	setPtr(ptr);
+}
+
+void    *Mlx::getPtr(void) const
 {
     return (this->ptr);
 }
 
-void    setPtr(void *ptr)
+void    Mlx::setPtr(void *ptr)
 {
     this->ptr = ptr;
 }
 
-void    *getWinPtr(void) const
+void    *Mlx::getWinPtr(void) const
 {
     return (this->win_ptr);
 }
 
-void    setWinPtr(void *win_ptr)
+void    Mlx::setWinPtr(void *win_ptr)
 {
     this->win_ptr = win_ptr;
 }
 
-void    *getImg(void) const
+void    *Mlx::getImg(void) const
 {
     return (this->img);
 }
 
-void    setImg(void *img)
+void    Mlx::setImg(void *img)
 {
     this->img = img;
 }
