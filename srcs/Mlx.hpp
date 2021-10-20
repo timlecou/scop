@@ -7,6 +7,7 @@ class Mlx
         void    *ptr;
         void    *win_ptr;
         void    *img;
+        
     public:
         Mlx(void);
         Mlx(const Mlx &mlx);
@@ -22,6 +23,7 @@ class Mlx
         void    setImg(void *img);
 
         void    init(void);
+        void    create_win(int x, int y, char *name);
 
 };
 

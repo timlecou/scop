@@ -1,7 +1,9 @@
 #ifndef SCOP_H
 # define SCOP_H
-# include <iostream>
-# include "mlx.h"
+extern "C" {
+	#include "../mlx_linux/mlx.h"
+}
 # include "../srcs/Mlx.hpp"
+# include <iostream>
 
 #endif

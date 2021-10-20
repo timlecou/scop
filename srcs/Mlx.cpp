@@ -1,4 +1,4 @@
-#include "scop.h"
+#include "../includes/scop.h"
 
 Mlx::Mlx(void)
 {
@@ -25,6 +25,11 @@ void    Mlx::init(void)
 {
     void	*ptr = mlx_init();
 	setPtr(ptr);
+}
+
+void    Mlx::create_win(int x, int y, char *name)
+{
+    setWinPtr(mlx_new_window(getPtr(), x, y, name));
 }
 
 void    *Mlx::getPtr(void) const

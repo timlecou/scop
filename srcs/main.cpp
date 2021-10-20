@@ -1,11 +1,6 @@
-#include "scop.h"
+#include "../includes/scop.h"
 
-int	main(int ac, char **av)
+int		main(void)
 {
-	(void)ac;
-	(void)av;
-	Mlx	mlx;
-
-	mlx.init();
 	return (0);
 }
